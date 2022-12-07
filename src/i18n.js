@@ -55,6 +55,9 @@ i18n
             "Make sure that you": "Make sure that you",
             "have the admin access": "have the admin access",
             "fb business manager": "Facebook business manager account.",
+            "you need": "You'll need an active",
+            "phone number": "phone number",
+            "which you can verify via": "which you can verify via"
             
           }
         }
