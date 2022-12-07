@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { accountTypes } from '../utils';
 import Select from 'react-select';
+import { useTranslation } from 'react-i18next';
 
-const AccountTypeDropDown = () => {
-    const onChangeDropDown = (event) => {
-        console.log(event.target.value);
+const AccountTypeDropDown = (props) => {
+    const {onchangeData}= props;
+    const [selectOption, setSelectOption] = useState(null);
+    const { t, i18n } = useTranslation();
+    
+    const onChangeDropDown = (option) => {
+        setSelectOption(option);
+        onchangeData({action: "update", payload: option.value});
     }
+
     const accountTypeOptions = accountTypes.map(item => {
-        item.label = (
+        const newItem = {};
+        newItem.value = item.value;
+        newItem.label = (
             <>
-            <label className='fs-5'>{item.title1}</label>
-            <p className='fs-6 mt-1'>{item.title2}</p>
+            <label className='fs-5'>{t(item.title1)}</label>
+            <p className='fs-6 mt-1'>{t(item.title2)}</p>
             </>
         )
-        return item;
+        return newItem;
     })
+
     return(
         <React.Fragment>
-            <Select  options={accountTypeOptions} placeholder={"Select..."}/>
+            <label>{t('Choose account type')} <span className='text-danger'>*</span></label>
+            <Select  options={accountTypeOptions} placeholder={"Select..."} onChange={onChangeDropDown} value={selectOption}/>
         </React.Fragment>
     )
 }

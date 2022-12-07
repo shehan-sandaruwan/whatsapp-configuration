@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { useTranslation } from 'react-i18next';
 
 const AgreementContent = (props) => {
+    const {onClickCheckBox, isAgreed}= props;
+    const { t, i18n } = useTranslation();
+
     return(
-        <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked={isAgreed} onClick={onClickCheckBox}/>
         <label class="form-check-label" for="flexCheckDefault">
-            I have read the above information before moving ahead.
+           {t('agreement')}
         </label>
     </div>
     )

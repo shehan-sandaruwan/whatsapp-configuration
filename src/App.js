@@ -1,12 +1,10 @@
+import React, { useEffect, useMemo, useCallback, useState } from "react";
 import WhatsAppChannel from "./components/WhatsAppChannel";
-import StepsLayout from "./components/StepLayout";
-import ErrorPage from "./components/ErrorPage";
-import { useEffect, useMemo } from "react";
 
-function App() {
+function App(props) {
   return (
     <div className='vw-100'>
-      <ErrorPage />
+      <WhatsAppChannel/>
     </div>
   );
 }
